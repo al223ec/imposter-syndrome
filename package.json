@@ -1,0 +1,27 @@
+{
+  "name": "imposter-syndrome",
+  "version": "1.0.0",
+  "description": "Be a better developer",
+  "main": "compose.js",
+  "dependencies": {
+    "jshint": "^2.9.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/al223ec/imposter-syndrome.git"
+  },
+  "author": "Anton Ledström",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/al223ec/imposter-syndrome/issues"
+  },
+  "homepage": "https://github.com/al223ec/imposter-syndrome#readme"
+}
