@@ -93,3 +93,16 @@ assertEqual(-1, max([-21,-3483,-2,-1]));
 
 console.log('Challenge 3 completed');
 console.log("All tests pass.");
+
+
+
+// mapish implementation
+const newMap = _.curry(function(f, list) {
+  const concatList = function(acc, elt) {
+    return acc.concat(f(elt));
+  };
+
+  return _.reduce(concatList, [], list);
+});
+
+console.log(newMap(_.add(3), [1,2,3]));
