@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Constant runtime
 // Big O Notation: "O (1)"
 
