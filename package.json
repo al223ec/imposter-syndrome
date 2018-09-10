@@ -4,16 +4,21 @@
   "description": "Be a better developer",
   "main": "compose.js",
   "dependencies": {
+    "chokidar-cli": "^1.2.1",
     "jshint": "^2.9.6",
     "ramda": "^0.25.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.13.0",
+    "npm-run-all": "^4.1.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:algo": "chokidar 'algo.js' -c 'node algo.js'",
+    "watch:compose": "chokidar 'compose.js' -c 'node compose.js'",
+    "imposter": "npm-run-all --parallel watch:*"
   },
   "repository": {
     "type": "git",
