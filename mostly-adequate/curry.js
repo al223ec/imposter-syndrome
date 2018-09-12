@@ -55,3 +55,34 @@ censored('Chocolate Rain'); // 'Ch*c*l*t* R**n'
 
 const getChildren = x => x.childNodes;
 const getAllTheChildren = map(getChildren);
+/*  compared with allTheChildren function would be with the uncurried map from lodash (note the arguments are in a different order):
+    const allTheChildren = elements => map(elements, getChildren);
+*/
+
+//  # Exercises
+//  Helpers
+const split = curry((sep, str) => str.split(sep));
+const reduce = curry((fn, zero, xs) => xs.reduce(fn, zero));
+
+const keepHighest = (x, y) => (x >= y ? x : y);
+/*  # 1
+    Refactor to remove all arguments by partially applying the function.
+    const words = str => split(' ', str);
+*/
+
+const words = split(' ');
+
+/*  # 2
+    Refactor to remove all arguments by partially applying the functions.
+    const filterQs = xs => filter(x => x.match(/q/i), xs);
+*/
+
+const filterQs = filter(match(/q/i));
+
+/*  # 3
+    Refactor `max` to not reference any arguments using the helper function
+    `keepHighest`.
+*/
+
+const max = reduce(keepHighest, -Infinity);
+max([1 , 3, 9 , 3, 4, 5]); // 9
