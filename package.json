@@ -18,6 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:algo": "chokidar 'algo.js' -c 'node algo.js'",
     "watch:compose": "chokidar 'compose.js' -c 'node compose.js'",
+    "watch:curry": "chokidar 'mostly-adequate/curry.js' -c 'node mostly-adequate/curry.js'",
     "imposter": "npm-run-all --parallel watch:*"
   },
   "repository": {

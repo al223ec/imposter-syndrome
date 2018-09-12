@@ -51,7 +51,61 @@ function isPalindrome(string) {
     return chars.join('') === chars.reverse().join('');
 }
 
+// Palindromes
+// console.log(isPalindrome('Madam I\'m Adam'));
+// console.log(isPalindrome('No Madam I\'m Adam'));
+// console.log(isPalindrome('race car'));
 
-console.log(isPalindrome('Madam I\'m Adam'));
-console.log(isPalindrome('No Madam I\'m Adam'));
-console.log(isPalindrome('race car'));
+
+function ceasarCipher (str, n) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    return str.toLowerCase().split('').reduce((acc, curr, i, arr) => {
+        if (curr === ' '){
+            return `${acc} `;
+        }
+        const index = (alphabet.indexOf(curr) + n) % alphabet.length;
+        return acc + alphabet[index < 0 ? alphabet.length + index : index];
+    }, '');
+}
+
+
+function reverseWords (str) {
+    return str.split(' ').reduce((acc, word) => {
+        const reversedWord = word.split('').reduceRight((acc, curr) => acc += curr, '');
+        return `${acc} ${reversedWord}`;
+    }, '');
+}
+
+console.log(reverseWords('this is a string of words'))
+// console.log(ceasarCipher('Zoo Keeper', 2)); // bqq mggrgt
+// console.log(ceasarCipher('Big Car', -16)); // lsq mkb
+// console.log(ceasarCipher('Javascript', -900)); // tkfkcmbszd
+// console.log(ceasarCipher('anton ledström', 1));
+
+// Fibinaci
+// F(n) = F(n-1) + F(n-2)
+// (2^N) time complexity, i e exponential and very bad
+// function fibonacci(num) {
+//     if (num <= 1) {
+//         return 1;
+//     }
+//     return fibonacci(num - 1) + fibonacci(num - 2);
+// }
+
+// smarter recursion and fastest
+function fib(prev, currentFibNumber, n) {
+    // we don't have to recalculate all numbers
+    return n ? fib(currentFibNumber, prev + currentFibNumber, n - 1) : prev;
+}
+// console.log(fib(0, 1, 50));
+
+// linear time
+// O(2n)
+function fibonacci(num, memo) {
+    memo = memo || {};
+
+    if (memo[num]) return memo[num];
+    if (num <= 1) return 1;
+
+    return memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
+}
