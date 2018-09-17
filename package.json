@@ -20,6 +20,7 @@
     "watch:compose": "chokidar 'compose.js' -c 'node compose.js'",
     "watch:mostly-compose": "chokidar 'mostly-adequate/compose.js' 'mostly-adequate/appendix.js' -c 'node mostly-adequate/compose.js'",
     "watch:curry": "chokidar 'mostly-adequate/curry.js' -c 'node mostly-adequate/curry.js'",
+    "watch:debugging": "chokidar 'debugging.js' -c 'node debugging.js'",
     "imposter": "npm-run-all --parallel watch:*"
   },
   "repository": {

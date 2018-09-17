@@ -76,7 +76,7 @@ function reverseWords (str) {
     }, '');
 }
 
-console.log(reverseWords('this is a string of words'))
+// console.log(reverseWords('this is a string of words'))
 // console.log(ceasarCipher('Zoo Keeper', 2)); // bqq mggrgt
 // console.log(ceasarCipher('Big Car', -16)); // lsq mkb
 // console.log(ceasarCipher('Javascript', -900)); // tkfkcmbszd
@@ -109,3 +109,71 @@ function fibonacci(num, memo) {
 
     return memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
 }
+
+const { assertEqual } = require("./test");
+
+const getMean = (arr) => arr.reduce((acc, curr) => acc + curr, 0)/arr.length;
+  // [ 1, 2, 3, 4, 5, 4, 6, 1] === { mean: 3.25, median: 3.5, mode: [1, 4] }
+  // [ 9, 10, 23, 10, 23, 9 ] ==== { mean: 14, median: 10, mode: [] }
+assertEqual(3.25, getMean([ 1, 2, 3, 4, 5, 4, 6, 1]));
+assertEqual(14, getMean([ 9, 10, 23, 10, 23, 9 ]));
+console.log('mean passed!');
+
+const getMedian = (arr) => {
+    const sortArr = arr.sort((a, b) => a - b);
+    const split = arr.length/2;
+
+    return arr.length % 2 === 0 ? (sortArr[split-1] + sortArr[split])/2 : sortArr[Math.floor(split)];
+};
+
+assertEqual(3.5, getMedian([ 1, 2, 3, 4, 5, 4, 6, 1]));
+assertEqual(10, getMedian([ 9, 10, 23, 10, 23, 9 ]));
+console.log('median passed!');
+
+
+const getMode = (arr) => {
+    const matchHash = arr.reduce((acc, curr) => {
+        acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+        return acc;
+    }, {});
+
+    // Object.entries(matchHash).reduce((acc, curr) => {
+    //     // curr [key, value] pairs
+    //     const key = curr[0];
+    //     const value = curr[1];
+    //     value > curr[1] ? curr : curr
+    //      return value > matchHash[acc[0]] ? [key] : value === acc[0] ? acc.push(key) : acc;
+    // }, [null, -Infinity]);
+    // return arr.reduce((acc, curr) => {
+    //     matchHash[curr] >= acc[0];
+    //     acc.push(curr);
+    // }, [])
+
+}
+
+// function getMode(array) {
+//     var modeObj = {};
+    
+//     // create modeObj
+//     array.forEach(num => {
+//       if (!modeObj[num]) modeObj[num] = 0;
+//       modeObj[num]++;
+//     });
+    
+//     // create array of mode/s 
+//     var maxFrequency = 0;
+//     var modes = [];
+//     for (var num in modeObj) {
+//       if (modeObj[num] > maxFrequency) {
+//         modes = [num];
+//         maxFrequency = modeObj[num];
+//       }
+//       else if (modeObj[num] === maxFrequency) modes.push(num);
+//     }
+//     // if every value appears same amount of times 
+//     if (modes.length === Object.keys(modeObj).length) modes = [];
+//     return modes;
+//   }
+   
+
+console.log(getMode([ 1, 2, 3, 4, 5, 4, 6, 1]))

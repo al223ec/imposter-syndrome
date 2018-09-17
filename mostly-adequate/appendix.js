@@ -10,16 +10,18 @@ const curry = (fn) => {
         return fn.call(null, ...args);
     };
 };
-
+// get :: String -> Object -> a
+const get = curry((p, obj) => obj[p]);
 // join :: Monad m => m (m a) -> m a
-const join = m => { 
+const join = m => {
     console.log(m.bound);
     return m.join();
 };
 
+// last :: [a] -> a
+const last = xs => xs[xs.length - 1];
 // map :: Functor f => (a -> b) -> f a -> f b
 const map = curry((fn, f) => f.map(fn));
-
 const reduce = curry((fn, zero, xs) => xs.reduce(fn, zero));
 const replace = curry((re, rpl, str) => str.replace(re, rpl));
 // split :: String -> String -> [String]
@@ -31,6 +33,9 @@ const trace = curry((tag, x) => {
     return x;
 });
 
+// prop :: String -> Object -> a
+const prop = curry((p, obj) => obj[p]);
+
 module.exports = {
     curry,
     reduce,
@@ -40,4 +45,7 @@ module.exports = {
     map,
     split,
     trace,
+    prop,
+    get,
+    last,
 };

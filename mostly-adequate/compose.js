@@ -7,7 +7,10 @@ const {
     join,
     map,
     split,
-    trace } = require("./appendix");
+    trace,
+    get,
+    last,
+    prop } = require("./appendix");
 
     // compose :: ((a -> b), (b -> c),  ..., (y -> z)) -> a -> z
 const compose = (...fns) => (...args) => fns.reduceRight((res, fn) => [fn.call(null, ...res)], args)[0];
@@ -38,7 +41,7 @@ console.log(shout('send in the clowns'));
 
 const head = x => x[0];
 const reverse = reduce((acc, x) => [x].concat(acc), []);
-const last = compose(head, reverse);
+// const last = compose(head, reverse);
 
 last(['jumpkick', 'roundhouse', 'uppercut']); // uppercut
 
@@ -93,3 +96,24 @@ console.log(initials('hunter stockton thompson')); // 'H. S. T'
     can't compose a while loop, for instance. Be warned, however, pointfree is a double-edged sword and can
     sometimes obfuscate intention.
 */
+
+const cars = [{
+    name: 'Aston Martin One-77',
+    horsepower: 750,
+    dollar_value: 1850000,
+    in_stock: true,
+},{
+    name: 'BMW X5',
+    horsepower: 500,
+    dollar_value: 1250000,
+    in_stock: false,
+},{
+    name: 'Volvo 740',
+    horsepower: 5000,
+    dollar_value: 250000,
+    in_stock: true,
+}];
+
+const isLastInStock = compose(get('in_stock'), last);
+isLastInStock(cars);
+
